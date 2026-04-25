@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oriefi's Cleaning - Professional Cleaning Services</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -92,12 +93,13 @@
     <nav class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="/" class="text-2xl font-bold text-blue-700">Oriefi's <span
-                        class="text-blue-500">Clean</span></a>
+                <a href="/" class="text-2xl font-bold text-blue-700">{{ $settings['site_name'] ?? "Oriefi's" }} <span
+                        class="text-blue-500"></span></a>
+
                 <div class="hidden md:flex space-x-8">
                     <a href="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
                     <a href="/about" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
-                    <a href="/services" class="text-gray-700 hover:text-blue-600 font-medium">Services</a>
+                    <a href="/allservices" class="text-gray-700 hover:text-blue-600 font-medium">Services</a>
                     <a href="/contact" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
                     @auth
                         <a href="/admin/dashboard" class="text-gray-700 hover:text-blue-600 font-medium">Dashboard</a>
@@ -109,7 +111,7 @@
                         <a href="{{ route('login') }}" class="text-gray-700 hover:text-blue-600 font-medium">Login</a>
                     @endauth
                 </div>
-                <a href="https://wa.me/2348032068718" target="_blank"
+                <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '2348032068718' }}" target="_blank"
                     class="bg-green-500 text-white px-5 py-2 rounded-full hover:bg-green-600 transition flex items-center gap-2">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
@@ -120,25 +122,24 @@
     <!-- Hero Slider -->
     <div class="hero-slider">
         <div class="slides">
-            <div class="slide"
-                style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600');">
-            </div>
-            <div class="slide"
-                style="background-image: url('https://images.unsplash.com/photo-1563453392212-326f5e854473?w=1600');">
-            </div>
-            <div class="slide"
-                style="background-image: url('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=1600');">
-            </div>
-            <div class="slide"
-                style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600');">
-            </div>
-            <div class="slide"
-                style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600');">
-            </div>
+            <div class="slide" style="background-image: url('{{ asset('images/hero1.jpeg') }}');"></div>
+
+            <div class="slide" style="background-image: url('{{ asset('images/hero2.jpeg') }}');"></div>
+
+            <div class="slide" style="background-image: url('{{ asset('images/hero3.jpeg') }}');"></div>
+
+            <div class="slide" style="background-image: url('{{ asset('images/hero4.jpeg') }}');"></div>
+
+            <div class="slide" style="background-image: url('{{ asset('images/house_cleaning.jpeg') }}');"></div>
         </div>
+
         <div class="hero-content">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4">Professional Cleaning Services</h1>
-            <p class="text-xl md:text-2xl mb-8">Industrial-grade equipment for spotless results</p>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">
+                {{ $settings['hero_title'] ?? 'Professional Cleaning Services' }}
+            </h1>
+            <p class="text-xl md:text-2xl mb-8">
+                {{ $settings['hero_subtitle'] ?? 'Industrial-grade equipment for spotless results' }}
+            </p>
             <div class="flex flex-wrap justify-center gap-4">
                 <span class="bg-white/20 backdrop-blur px-5 py-2 rounded-full">MUR-POWER Vacuum</span>
                 <span class="bg-white/20 backdrop-blur px-5 py-2 rounded-full">150 Bar Pressure</span>
@@ -154,8 +155,7 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 mt-28 gap-12">
-        <div><img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=600" alt="Team"
-                class="rounded-2xl shadow-xl w-full"></div>
+        <div><img src="{{ asset('images/cleaning_image.jpeg') }}" alt="Team" class="rounded-2xl shadow-xl w-full"></div>
         <div>
             <h2 class="text-3xl flex justify-center font-bold mb-4">Who We Are</h2>
             <p class="text-gray-600 mb-4 leading-relaxed">Oriefi's Cleaning Services is a premier cleaning company
@@ -177,7 +177,7 @@
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400" alt="Cleaning"
+                    <img src="{{ asset('images/cleaning_in_progress2.jpeg') }}" alt="Cleaning"
                         class="w-full h-56 object-cover">
                     <div class="p-6">
                         <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
@@ -188,7 +188,7 @@
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400" alt="Office Cleaning"
+                    <img src="{{ asset('images/cleaning_in_progress.jpeg') }}" alt="Office Cleaning"
                         class="w-full h-56 object-cover">
                     <div class="p-6">
                         <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
@@ -199,7 +199,7 @@
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400" alt="Pressure Washing"
+                    <img src="{{ asset('images/greenworks_machine.jpeg') }}" alt="Pressure Washing"
                         class="w-full h-56 object-cover">
                     <div class="p-6">
                         <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
@@ -249,17 +249,17 @@
             </div>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="rounded-2xl overflow-hidden shadow-xl">
-                    <video class="w-full" controls
-                        poster="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600">
-                        <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                    <video class="w-full h-[450px] object-cover" controls
+                        poster="{{ asset($settings['video_1_poster'] ?? 'images/video-poster1.jpg') }}">
+                        <source src="{{ asset($settings['video_1_url'] ?? 'videos/cleaning_video1.mp4') }}"
                             type="video/mp4">
                     </video>
-                    <p class="text-center mt-2 text-gray-600">Residential Deep Cleaning</p>
+                    <p class="text-center mt-2 text-gray-600">Professional Deep Cleaning</p>
                 </div>
                 <div class="rounded-2xl overflow-hidden shadow-xl">
-                    <video class="w-full" controls
-                        poster="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=600">
-                        <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFunflies.mp4"
+                    <video class="w-full h-[450px] object-cover" controls
+                        poster="{{ asset($settings['video_2_poster'] ?? 'images/video-poster2.jpg') }}">
+                        <source src="{{ asset($settings['video_2_url'] ?? 'videos/cleaning_video2.mp4') }}"
                             type="video/mp4">
                     </video>
                     <p class="text-center mt-2 text-gray-600">Commercial Pressure Washing</p>
@@ -448,75 +448,8 @@
         }
     </style>
 
-    {{--
-    <script>
-        // FAQ Accordion functionality
-        const faqButtons = document.querySelectorAll('.faq-question');
-
-        faqButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const answer = button.nextElementSibling;
-                const icon = button.querySelector('i');
-
-                // Toggle current answer
-                answer.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
-
-                Optional: Close others(uncomment if you want only one open at a time)
-            faqButtons.forEach(otherButton => {
-                if (otherButton !== button) {
-                    const otherAnswer = otherButton.nextElementSibling;
-                    const otherIcon = otherButton.querySelector('i');
-                    otherAnswer.classList.add('hidden');
-                    otherIcon.classList.remove('rotate-180');
-                }
-            });
-        });
-        });
-    </script> --}}
-
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
-            <div>
-                <h3 class="text-2xl font-bold mb-4">Oriefi's Clean</h3>
-                <p class="text-gray-400">Professional cleaning services with industrial-grade equipment for spotless
-                    results.</p>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-4">Quick Links</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <li><a href="/" class="hover:text-white">Home</a></li>
-                    <li><a href="/about" class="hover:text-white">About Us</a></li>
-                    <li><a href="/services" class="hover:text-white">Services</a></li>
-                    <li><a href="/contact" class="hover:text-white">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-4">Contact Info</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <li><i class="fas fa-phone mr-2"></i> +234 803 206 8718</li>
-                    <li><i class="fab fa-whatsapp mr-2"></i> WhatsApp: +234 803 206 8718</li>
-                    <li><i class="fas fa-envelope mr-2"></i> info@orieflsclean.com</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-4">Follow Us</h4>
-                <div class="flex space-x-4"><a href="#"
-                        class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600"><i
-                            class="fab fa-facebook-f"></i></a><a href="#"
-                        class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-400"><i
-                            class="fab fa-twitter"></i></a><a href="#"
-                        class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600"><i
-                            class="fab fa-instagram"></i></a><a href="https://wa.me/2348032068718"
-                        class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600"><i
-                            class="fab fa-whatsapp"></i></a></div>
-            </div>
-        </div>
-        <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
-            <p>&copy; 2026 Oriefi's Cleaning Services. All rights reserved.</p>
-        </div>
-    </footer>
+    <x-footer />
 
     <script>
         // Counter animation - resets and counts every time section is viewed
