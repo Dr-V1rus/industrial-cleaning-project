@@ -89,6 +89,8 @@
 
 <body class="bg-white">
 
+    <x-loader :duration="500" />
+
     <!-- Navigation -->
     <x-nav />
 

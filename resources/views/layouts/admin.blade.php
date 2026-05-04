@@ -8,6 +8,13 @@
     <title>Admin Dashboard - Oriefi's Cleaning</title>
     <!-- Favicon - Simple and working -->
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+
+    <!-- SEO Meta Tags -->
+    @isset($seoTitle)
+        <x-seo :title="$seoTitle" :description="$seoDescription" :keywords="$seoKeywords" />
+    @else
+        <x-seo />
+    @endisset
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -73,7 +80,9 @@
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
 
     <!-- Desktop Sidebar (collapsible) -->
-    <div id="desktopSidebar" class="hidden md:block fixed left-0 top-0 h-full bg-gray-900 text-white z-20 transition-sidebar" style="width: 260px;">
+    <div id="desktopSidebar"
+        class="hidden md:block fixed left-0 top-0 h-full bg-gray-900 text-white z-20 transition-sidebar"
+        style="width: 260px;">
         <div class="p-5 border-b border-gray-800 flex justify-between items-center">
             <span id="desktopLogo" class="font-bold text-xl"><i class="fas fa-broom"></i> Oriefi's</span>
             <button id="collapseSidebarBtn" class="text-gray-400 hover:text-white">
@@ -98,7 +107,8 @@
             </a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="flex items-center gap-3 px-5 py-3 w-full text-left hover:bg-gray-800 transition">
+                <button type="submit"
+                    class="flex items-center gap-3 px-5 py-3 w-full text-left hover:bg-gray-800 transition">
                     <i class="fas fa-sign-out-alt w-5"></i> <span class="nav-text">Logout</span>
                 </button>
             </form>

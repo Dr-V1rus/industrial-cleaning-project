@@ -6,19 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Oriefi Cleaning') }}</title>
-    
+
     <!-- Favicon - Simple and working -->
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
-    
+
+    <!-- SEO Meta Tags -->
+    @isset($seoTitle)
+        <x-seo :title="$seoTitle" :description="$seoDescription" :keywords="$seoKeywords" />
+    @else
+        <x-seo />
+    @endisset
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-gray-50">
+    <x-loader :duration="400" />
     <nav class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">

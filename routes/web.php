@@ -35,6 +35,10 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 require __DIR__ . '/auth.php';
 Route::get('/admin/bookings', [AdminBookingController::class, 'index'])->name('admin.bookings');
 
+Route::get('/sitemap.xml', function () {
+    return response()->view('sitemap')->header('Content-Type', 'text/xml');
+});
+
 // Settings routes
 Route::get('/admin/settings', [SettingsController::class, 'index'])->name('admin.settings');
 
