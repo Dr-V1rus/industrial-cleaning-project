@@ -7,21 +7,25 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
-    curl
-
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN docker-php-ext-install gd pdo pdo_mysql pdo_pgsql
+    curl \
+    libpq-dev \
+    libonig-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql pdo_pgsql mbstring
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-COPY . /var/www/html/
+WORKDIR /var/www/html
 
-RUN composer install --no-dev --optimize-autoloader
+COPY . /var/www/html
+
+RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs
 
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 755 /var/www/html/storage /var/www/html/bootstrap/cache
 
-RUN cp .env.example .env || true
-RUN php artisan key:generate
+RUN cp .env.example .env 2>/dev/null || true
 
-RUN a2enmod rewrite
+EXPOSE 80
+
+CMD ["apache2-foreground"]
