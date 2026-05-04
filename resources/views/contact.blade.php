@@ -27,8 +27,11 @@
     <nav class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
+                
                 <a href="/" class="text-2xl font-bold text-blue-700">
+
                 <x-application-logo /></a>
+
                 <div class="hidden md:flex space-x-8">
                     <a href="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
                     <a href="/about" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
