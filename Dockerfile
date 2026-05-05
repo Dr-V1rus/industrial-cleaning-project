@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     libpq-dev \
     libonig-dev \
+    npm \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql pdo_pgsql mbstring
 
@@ -21,7 +22,11 @@ WORKDIR /var/www/html
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs
 
-# Run migrations automatically during build
+# Install Node dependencies and build Vite assets
+RUN npm install
+RUN npm run build
+
+# Run migrations
 RUN php artisan migrate --force || true
 
 # Create storage link
@@ -31,7 +36,7 @@ RUN php artisan storage:link || true
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 755 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Configure Apache to point to the public directory
+# Configure Apache
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
 

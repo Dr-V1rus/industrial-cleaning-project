@@ -65,6 +65,16 @@
             <p class="text-gray-400 text-sm mt-2">WhatsApp: +234 803 206 8718</p>
         </div>
     </footer>
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
 </body>
 
 </html>
