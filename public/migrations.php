@@ -1,16 +1,15 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+// Correct path to the vendor folder (one level up from public)
+require __DIR__ . '/../vendor/autoload.php';
 
-$app = require_once __DIR__ . '/bootstrap/app.php';
+$app = require_once __DIR__ . '/../bootstrap/app.php';
 
 $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
-
 $kernel->bootstrap();
 
-// Run sync
 $kernel->call('migrate', [
     '--force' => true,
 ]);
 
-echo "✅ Migration completed.";
+echo "✅ Migration completed successfully!";
