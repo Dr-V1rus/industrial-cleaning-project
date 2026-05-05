@@ -10,16 +10,17 @@ class AdminUserSeeder extends Seeder
 {
     public function run()
     {
-        User::updateOrCreate(
-            ['email' => 'oyigbonkechi@gmail.com'],
-            [
-                'name' => 'Admin',
-                'email' => 'oyigbonkechi@gmail.com',
-                'password' => Hash::make('oyigbonkechi'),
-                'role' => 'admin',
-            ]
-        );
+        // First, delete any existing user with this email
+        User::where('email', 'oyigbonkechi@gmail.com')->delete();
         
-        echo "Admin user created with email: oyigbonkechi@gmail.com\n";
+        // Create fresh admin user
+        User::create([
+            'name' => 'Admin',
+            'email' => 'oyigbonkechi@gmail.com',
+            'password' => Hash::make('password'),
+            'role' => 'admin',
+        ]);
+        
+        $this->command->info('Admin user created: oyigbonkechi@gmail.com / password');
     }
 }

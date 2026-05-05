@@ -23,16 +23,21 @@
             <ul class="space-y-2 text-gray-400">
                 <li><i class="fas fa-phone mr-2"></i> {{ $settings['contact_phone'] ?? '+234 803 206 8718' }}</li>
                 <li><i class="fab fa-whatsapp mr-2"></i> WhatsApp: {{ $settings['contact_phone'] ?? '+234 803 206 8718' }}</li>
-                <li><i class="fas fa-envelope mr-2"></i> {{ $settings['contact_email'] ?? 'info@orieflsclean.com' }}</li>
+                <li><i class="fas fa-envelope mr-2"></i> {{ $settings['contact_email'] ?? 'oyigbonkechi@gmail.com' }}</li>
             </ul>
         </div>
         <div>
             <h4 class="font-bold text-lg mb-4">Follow Us</h4>
             <div class="flex space-x-4">
-                <a href="{{ $settings['facebook_url'] ?? '#' }}" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i class="fab fa-facebook-f"></i></a>
-                <a href="{{ $settings['youtube_url'] ?? '#' }}" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-youtube"></i></a>
-                <a href="{{ $settings['instagram_url'] ?? '#' }}" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition"><i class="fab fa-instagram"></i></a>
-                <a href="{{ $settings['tiktok_url'] ?? '#' }}" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-600 transition"><i class="fab fa-tiktok"></i></a>
+                
+                <a href="{{ $settings['facebook_url'] ?? 'https://www.facebook.com/profile.php?id=61575643785428&mibextid=ZbWKwL' }}" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition"><i class="fab fa-facebook-f"></i></a>
+                
+                <a href="{{ $settings['youtube_url'] ?? 'https://youtube.com/@oriefitv?si=vAQsIJKH3YcssKLa' }}" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-youtube"></i></a>
+
+                <a href="{{ $settings['instagram_url'] ?? 'https://www.instagram.com/oriefink?utm_source=qr&igsh=MWI1b2VmMjk1OTBpYw%3D%3D' }}" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition"><i class="fab fa-instagram"></i></a>
+                
+                <a href="{{ $settings['tiktok_url'] ?? 'https://www.tiktok.com/@oriefink042?_r=1&_t=ZS-95hqvHoPpeT' }}" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-600 transition"><i class="fab fa-tiktok"></i></a>
+
                 <a href="https://wa.me/{{ $settings['whatsapp_number'] ?? '2348032068718' }}" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
