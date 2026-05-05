@@ -15,15 +15,19 @@ RUN apt-get update && apt-get install -y \
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy from repository root (where your app, config, public, etc. folders are)
 COPY . /var/www/html/
 
 WORKDIR /var/www/html
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs
 
-# Create storage link and set permissions
+# Run migrations automatically during build
+RUN php artisan migrate --force || true
+
+# Create storage link
 RUN php artisan storage:link || true
+
+# Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 755 /var/www/html/storage /var/www/html/bootstrap/cache
 
