@@ -186,7 +186,7 @@
                 </div>
             </div>
             <div class="text-center mt-10">
-                <a href="/services"
+                <a href="/allservices"
                     class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition">View
                     All Services →</a>
             </div>
