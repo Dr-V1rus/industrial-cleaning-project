@@ -266,9 +266,9 @@
                             <option value="{{ $service->id }}">{{ $service->name }}</option>
                         @endforeach
                     </select>
-                    <div class="grid md:grid-cols-2 text-gray-600 gap-4 mb-4">
-                        <input type="date" name="preferred_date" required class="w-full px-4 py-3 border rounded-lg">
-                        <input type="time" name="preferred_time" class="w-full px-4 py-3 border rounded-lg">
+                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                        <input type="date" name="preferred_date" placeholder="preferred date" required class="w-full px-4 py-3 border rounded-lg">
+                        <input type="time" name="preferred_time" placeholder="preferred time" class="w-full px-4 py-3 border rounded-lg">
                     </div>
                     <textarea name="notes" placeholder="Special requests"
                         class="w-full mb-4 px-4 py-3 border rounded-lg" rows="3"></textarea>
