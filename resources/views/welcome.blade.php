@@ -266,7 +266,7 @@
                             <option value="{{ $service->id }}">{{ $service->name }}</option>
                         @endforeach
                     </select>
-                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <div class="grid md:grid-cols-2 text-gray-600 gap-4 mb-4">
                         <input type="date" name="preferred_date" required class="w-full px-4 py-3 border rounded-lg">
                         <input type="time" name="preferred_time" class="w-full px-4 py-3 border rounded-lg">
                     </div>
