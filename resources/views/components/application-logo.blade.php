@@ -1,3 +1,3 @@
-<a href="/" {{ $attributes }}>
-    <img src="{{ asset('images/logo.png') }}" alt="Application Logo" class="w-20 h-20 fill-current text-gray-500">
-</a>
+<div {{ $attributes }}>
+    <a href="{{ url('/') }}"><img src="{{ asset('logo.svg') }}" alt="Oriefi's Clean" class="h-20 w-auto"></a>
+</div>
